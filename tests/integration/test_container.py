@@ -60,6 +60,7 @@ def test_container_in_container(exec_container: Callable[[str], subprocess.Compl
     podman_run_container = exec_container(f"podman run -i --rm -d  -e ANSIBLE_DEV_TOOLS_CONTAINER=1  -e ANSIBLE_FORCE_COLOR=0 --name ghcr_io_ansible_community_ansible_dev_tools_latest ghcr.io/ansible/community-ansible-dev-tools:latest bash")
     assert podman_run_container.stdout == ""
     assert podman_run_container.stderr == ""
+    assert podman_run_container.returncode == 0
     
 
 
